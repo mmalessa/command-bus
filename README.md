@@ -1,6 +1,6 @@
 # Command bus
 
-Implementation of a simple command bus.
+Implementation of a simple command bus.  
 https://github.com/mmalessa/commandbus
 
 Very early test version.  
