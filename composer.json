@@ -1,24 +1,27 @@
 {
-    "name": "mmalessa/commandbus",
+    "name": "mmalessa/command-bus",
     "version": "0.0.1",
     "type": "library",
-    "description": "Simple library to implement commandbus.",
-    "keywords": ["command bus", "commandbus"],
-    "homepage": "https://github.com/mmalessa/commandbus",
+    "description": "Simple library to implement command bus.",
+    "keywords": [
+        "command bus",
+        "command-bus"
+    ],
+    "homepage": "https://github.com/mmalessa/command-bus",
     "license": "GPL",
     "authors": [
         {
-	    "name": "Marcin Malessa",
-	    "email": "marcin@malessa.pl",
-	    "homepage": "http://github.com/mmalessa"
-	}
+            "name": "Marcin Malessa",
+            "email": "marcin@malessa.pl",
+            "homepage": "http://github.com/mmalessa/"
+        }
     ],
     "require": {
-	"php": ">=7.2"
+        "php": ">=7.2"
     },
     "autoload": {
-	"psr-4": {
+        "psr-4": {
             "Mmalessa\\CommandBus\\": "src/"
-	}
+        }
     }
 }
