@@ -8,7 +8,7 @@
         "command-bus"
     ],
     "homepage": "https://github.com/mmalessa/command-bus",
-    "license": "GPL",
+    "license": "MIT",
     "authors": [
         {
             "name": "Marcin Malessa",
