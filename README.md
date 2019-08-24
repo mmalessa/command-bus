@@ -1,7 +1,7 @@
 # Command bus
 
 Implementation of a simple command bus.  
-https://github.com/mmalessa/commandbus  
+https://github.com/mmalessa/command-bus  
 Use it at your own risk.  
 
 # Install
