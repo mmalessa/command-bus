@@ -4,6 +4,11 @@ Implementation of a simple command bus.
 https://github.com/mmalessa/commandbus  
 Use it at your own risk.  
 
+# Install
+```shell script
+composer req mmalessa/command-bus
+```
+
 # Usage
 ```php
 use Mmalessa\CommandBus\Command;
