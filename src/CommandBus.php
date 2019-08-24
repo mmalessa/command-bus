@@ -1,21 +1,38 @@
 <?php
 namespace Mmalessa\CommandBus;
 
-use Assert\Assertion;
+use InvalidArgumentException;
+use ReflectionClass;
 
 final class CommandBus
 {
-    private $commandHandlers;
+    private $commandHandlers = [];
 
-    public function subscribe($commandClass, $handlerClass)
+    public function subscribe(object $handlerClass)
     {
-        $this->commandHandlers[get_class($commandClass)] = $handlerClass;
+        $handlerClassName = get_class($handlerClass);
+        $handlerReflectionClass = new ReflectionClass($handlerClassName);
+        if (!$handlerReflectionClass->hasMethod('handle')) {
+            throw new InvalidArgumentException(
+                sprintf('There must be a "handle" method in the "%s" class.', $handlerClassName)
+            );
+        }
+
+        $commandReflectionClass = $handlerReflectionClass->getMethod('handle')->getParameters()[0]->getClass();
+        if(!$commandReflectionClass->implementsInterface(Command::class)) {
+            throw new InvalidArgumentException(
+                sprintf('Command %s must implement %s interface.', $commandReflectionClass->getName(), Command::class)
+            );
+        }
+
+        $this->commandHandlers[$commandReflectionClass->getName()] = $handlerClass;
     }
-    public function handle($command): void
+    public function handle(object $command): void
     {
-        Assertion::isObject($command);
         $commandClassName = get_class($command);
-        Assertion::keyExists($this->commandHandlers, $commandClassName);
+        if(!array_key_exists($commandClassName, $this->commandHandlers)) {
+            throw new InvalidArgumentException(sprintf('No handler has been registered for command: %s', $commandClassName));
+        }
         ($this->commandHandlers[$commandClassName])->handle($command);
     }
 }

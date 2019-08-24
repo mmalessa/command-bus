@@ -10,8 +10,11 @@ trait CommandTrait
         $this->payload = $payload;
     }
 
-    public function payload(): array
+    public function payload(string $key)
     {
-        return $this->payload;
+        if(!array_key_exists($key, $this->payload)) {
+            throw new \InvalidArgumentException(sprintf("Unknown key: %s", $key));
+        }
+        return $this->payload[$key];
     }
 }
