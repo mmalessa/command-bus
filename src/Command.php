@@ -4,5 +4,5 @@ namespace Mmalessa\CommandBus;
 interface Command
 {
     public function __construct(array $payload = []);
-    public function payload(string $key);
+    public function payload(): array;
 }

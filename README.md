@@ -27,6 +27,16 @@ class ExampleCommand implements Command
             ]
         );
     }
+
+    public function id()
+    {
+        return $this->payload['id'];
+    }
+
+    public function name()
+    {
+        return $this->payload['name'];
+    }
 }
 ```
 
@@ -36,8 +46,7 @@ class ExampleCommandHandler
     public function handle(ExampleCommand $command)
     {
         echo "Example command handler" . PHP_EOL;
-        printf("ID: %s\n", $command->payload('id'));
-        printf("Name: %s\n", $command->payload('name'));
+        var_dump($command->payload());
     }
 }
 ```
@@ -47,6 +56,8 @@ use Mmalessa\CommandBus\CommandBus;
 
 $commandBus = new CommandBus();
 $commandBus->subscribe(new ExampleCommandHandler());
+// The command class is automatically detected based on the type of parameter 
+// in the handler 'handle' method.
 
 $exampleCommand = ExampleCommand::create(1, "Silifon");
 $commandBus->handle($exampleCommand);

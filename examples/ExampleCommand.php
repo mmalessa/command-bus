@@ -17,4 +17,14 @@ class ExampleCommand implements Command
             ]
         );
     }
+
+    public function id()
+    {
+        return $this->payload['id'];
+    }
+
+    public function name()
+    {
+        return $this->payload['name'];
+    }
 }
