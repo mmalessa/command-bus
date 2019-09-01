@@ -6,6 +6,7 @@ class ExampleCommandHandler
     public function handle(ExampleCommand $command)
     {
         echo "Example command handler" . PHP_EOL;
-        var_dump($command->payload());
+        printf ("ID: %s\n", $command->getId());
+        printf("Name: %s\n", $command->getName());
     }
 }

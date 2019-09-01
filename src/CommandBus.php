@@ -19,12 +19,6 @@ final class CommandBus
         }
 
         $commandReflectionClass = $handlerReflectionClass->getMethod('handle')->getParameters()[0]->getClass();
-        if(!$commandReflectionClass->implementsInterface(Command::class)) {
-            throw new InvalidArgumentException(
-                sprintf('Command %s must implement %s interface.', $commandReflectionClass->getName(), Command::class)
-            );
-        }
-
         $this->commandHandlers[$commandReflectionClass->getName()] = $handlerClass;
     }
     public function handle(object $command): void
