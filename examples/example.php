@@ -11,5 +11,5 @@ use Mmalessa\CommandBus\Examples\ExampleCommand;
 $commandBus = new CommandBus();
 $commandBus->subscribe(new ExampleCommandHandler());
 
-$exampleCommand = new ExampleCommand(1, "Silifon");
-$commandBus->handle($exampleCommand);
+$command = new ExampleCommand(1, "Silifon");
+$commandBus->handle($command);

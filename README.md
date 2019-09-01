@@ -9,7 +9,7 @@ Use it at your own risk.
 composer req mmalessa/command-bus
 ```
 
-# Usage
+# Example of use
 ```php
 class ExampleCommand
 {
@@ -40,7 +40,7 @@ class ExampleCommandHandler
     public function handle(ExampleCommand $command)
     {
         echo "Example command handler" . PHP_EOL;
-        printf ("ID: %s\n", $command->getId());
+        printf("ID: %s\n", $command->getId());
         printf("Name: %s\n", $command->getName());
     }
 }
@@ -54,6 +54,6 @@ $commandBus->subscribe(new ExampleCommandHandler());
 // The command class is automatically detected based on the type of parameter 
 // in the handler 'handle' method.
 
-$exampleCommand = ExampleCommand::create(1, "Silifon");
-$commandBus->handle($exampleCommand);
+$command = ExampleCommand::create(1, "Silifon");
+$commandBus->handle($command);
 ```
